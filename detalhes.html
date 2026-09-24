@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalhes do galpão | GLX</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <a class="logo" href="index.html">
+      GLX <span>Galpões Logísticos Express</span>
+    </a>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="galpoes.html">Galpões</a>
+    </nav>
+  </header>
+
+  <main class="pagina-detalhes">
+    <a class="voltar-galpoes" href="galpoes.html">← Voltar aos galpões</a>
+    <div id="conteudo-galpao"></div>
+  </main>
+
+  <script src="dados-galpoes.js"></script>
+  <script>
+    const id = new URLSearchParams(window.location.search).get("id");
+    const galpao = galpoes.find(function (item) {
+      return item.id === id;
+    });
+    const conteudo = document.querySelector("#conteudo-galpao");
+
+    if (!galpao) {
+      const aviso = document.createElement("h1");
+      aviso.textContent = "Galpão não encontrado";
+      conteudo.append(aviso);
+    } else {
+      document.title = `${galpao.nome} | GLX`;
+
+      const titulo = document.createElement("h1");
+      titulo.textContent = galpao.nome;
+
+      const local = document.createElement("p");
+      local.textContent = `${galpao.cidade} / ${galpao.uf}`;
+
+      const area = document.createElement("p");
+      area.textContent = `Área: ${galpao.area}`;
+
+      const finalidade = document.createElement("p");
+      finalidade.textContent = `Finalidade: ${galpao.finalidade}`;
+
+      const descricao = document.createElement("p");
+      descricao.textContent = galpao.descricao;
+
+      conteudo.append(titulo, local, area, finalidade, descricao);
+    }
+  </script>
+</body>
+</html>

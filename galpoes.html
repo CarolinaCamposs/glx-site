@@ -22,7 +22,7 @@
     <p class="etiqueta">IMÓVEIS GLX</p>
     <h1>Galpões disponíveis</h1>
 
-    <section class="lista-galpoes">
+    <section class="lista-galpoes" id="lista-galpoes">
       <article class="item-galpao">
         <span class="etiqueta">EXEMPLO DEMONSTRATIVO</span>
         <h2>Galpão exemplo</h2>
@@ -31,5 +31,28 @@
       </article>
     </section>
   </main>
+  <script src="dados-galpoes.js"></script>
+<script>
+  const lista = document.querySelector("#lista-galpoes");
+
+  galpoes.forEach(function (galpao) {
+    const cartao = document.createElement("article");
+    cartao.className = "item-galpao";
+
+    const nome = document.createElement("h2");
+    nome.textContent = galpao.nome;
+
+    const local = document.createElement("p");
+    local.textContent = `${galpao.cidade} / ${galpao.uf}`;
+
+    const link = document.createElement("a");
+    link.className = "link-detalhes";
+    link.href = `detalhes.html?id=${encodeURIComponent(galpao.id)}`;
+    link.textContent = "Ver mais detalhes →";
+
+    cartao.append(nome, local, link);
+    lista.append(cartao);
+  });
+</script>
 </body>
 </html>
