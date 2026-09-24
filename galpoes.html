@@ -1,58 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galpões | GLX</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="cabecalho">
-    <a class="logo" href="index.html">
-      GLX <span>Galpões Logísticos Express</span>
-    </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Galpões | GLX</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="cabecalho">
+      <a class="logo" href="index.html">
+        GLX <span>Galpões Logísticos Express</span>
+      </a>
 
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="galpoes.html">Galpões</a>
-    </nav>
-  </header>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="galpoes.html">Galpões</a>
+      </nav>
+    </header>
 
-  <main class="pagina-galpoes">
-    <p class="etiqueta">IMÓVEIS GLX</p>
-    <h1>Galpões disponíveis</h1>
+    <main class="pagina-galpoes">
+      <p class="etiqueta">IMÓVEIS GLX</p>
+      <h1>Galpões disponíveis</h1>
 
-    <section class="lista-galpoes" id="lista-galpoes">
-      <article class="item-galpao">
-        <span class="etiqueta">EXEMPLO DEMONSTRATIVO</span>
-        <h2>Galpão exemplo</h2>
-        <p>Os dados e a foto de um imóvel real aparecerão aqui.</p>
-        <a class="link-detalhes" href="galpao-exemplo.html">Ver mais detalhes →</a>
-      </article>
-    </section>
-  </main>
-  <script src="dados-galpoes.js"></script>
-<script>
-  const lista = document.querySelector("#lista-galpoes");
+      <div class="layout-galpoes">
+        <aside class="menu-galpoes">
+          <h2>Escolha um galpão</h2>
+          <nav id="menu-galpoes" aria-label="Lista de galpões"></nav>
+        </aside>
 
-  galpoes.forEach(function (galpao) {
-    const cartao = document.createElement("article");
-    cartao.className = "item-galpao";
+        <section
+          class="lista-galpoes"
+          id="lista-galpoes"
+          aria-label="Imóveis disponíveis"
+        ></section>
+      </div>
+    </main>
+    <script src="dados-galpoes.js"></script>
+    <script>
+      const lista = document.querySelector("#lista-galpoes");
+      const menu = document.querySelector("#menu-galpoes");
 
-    const nome = document.createElement("h2");
-    nome.textContent = galpao.nome;
+      galpoes.forEach(function (galpao) {
+        const cartao = document.createElement("article");
+        cartao.className = "item-galpao";
 
-    const local = document.createElement("p");
-    local.textContent = `${galpao.cidade} / ${galpao.uf}`;
+        const nome = document.createElement("h2");
+        nome.textContent = galpao.nome;
 
-    const link = document.createElement("a");
-    link.className = "link-detalhes";
-    link.href = `detalhes.html?id=${encodeURIComponent(galpao.id)}`;
-    link.textContent = "Ver mais detalhes →";
+        const local = document.createElement("p");
+        local.textContent = `${galpao.cidade} / ${galpao.uf}`;
 
-    cartao.append(nome, local, link);
-    lista.append(cartao);
-  });
-</script>
-</body>
+        const link = document.createElement("a");
+        link.className = "link-detalhes";
+        link.href = `detalhes.html?id=${encodeURIComponent(galpao.id)}`;
+        const linkMenu = document.createElement("a");
+        linkMenu.href = link.href;
+        linkMenu.textContent = galpao.nome;
+        menu.append(linkMenu);
+        link.textContent = "Ver mais detalhes →";
+
+        if (galpao.imagem) {
+          const foto = document.createElement("img");
+          foto.src = galpao.imagem;
+          foto.alt = `Foto de ${galpao.nome}`;
+          foto.className = "foto-cartao";
+          cartao.append(foto);
+        }
+        cartao.append(nome, local, link);
+        lista.append(cartao);
+      });
+    </script>
+  </body>
 </html>

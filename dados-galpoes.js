@@ -1,11 +1,24 @@
 const galpoes = [
-  {
-    id: "exemplo",
-    nome: "Galpão exemplo",
-    cidade: "Cidade a informar",
-    uf: "UF",
-    area: "Área a informar",
-    finalidade: "Locação ou venda",
-    descricao: "Substituiremos este texto pelos dados reais do imóvel."
-  }
+    {
+        id: "exemplo",
+        nome: "Betim Business Park",
+        cidade: "BETIM",
+        uf: "MG",
+        area: "Área a informar",
+        finalidade: "Pré-Locação",
+        descricao: "Descrição do imóvel.",
+        imagem: "imagens/betim.jpg"
+    },
+
+    {
+        id: "exemplo-2",
+        nome: "Extrema Business Park",
+        cidade: "EXTREMA",
+        uf: "MG",
+        area: "Área a informar",
+        finalidade: "Pré-Locação",
+        descricao: "Descrição do imóvel.",
+        imagem: "imagens/extrema.jpg"
+    }
 ];
+
