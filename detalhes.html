@@ -6,6 +6,7 @@
     <title>Detalhes do galpão | GLX</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <header class="cabecalho">
       <a class="logo" href="index.html">
@@ -23,7 +24,12 @@
       <div id="conteudo-galpao"></div>
     </main>
 
+    <footer id="rodape-site"></footer>
+
+    <script src="contato.js"></script>
     <script src="dados-galpoes.js"></script>
+    <script src="rodape.js"></script>
+
     <script>
       const id = new URLSearchParams(window.location.search).get("id");
       const galpao = galpoes.find((item) => item.id === id);
@@ -80,6 +86,26 @@
         adicionarDado("MÓDULOS", galpao.modulos);
 
         const informacoes = criar("div", "detalhe-informacoes");
+        const chamada = criar("div", "detalhe-chamada");
+        const numero = contatoGLX.whatsapp.replace(/\D/g, "");
+
+        if (numero) {
+          const botao = criar(
+            "a",
+            "detalhe-botao",
+            "Consultar este galpão pelo WhatsApp ↗",
+          );
+
+          botao.href =
+            `https://wa.me/${numero}?text=` +
+            encodeURIComponent(
+              `Olá! Gostaria de saber mais sobre o imóvel ${galpao.nome}.`,
+            );
+
+          botao.target = "_blank";
+          botao.rel = "noopener noreferrer";
+          chamada.append(botao);
+        }
 
         const sobre = criar("section", "detalhe-sobre");
         sobre.append(
@@ -111,7 +137,68 @@
           informacoes.append(especificacoes);
         }
 
+        const contato = criar("section", "detalhe-contato");
+        contato.append(
+          criar("p", "detalhe-etiqueta", "FALE COM A GLX"),
+          criar("h2", "", "Interessou por este imóvel?"),
+        );
+
+        const botoes = criar("div", "acoes-contato");
+        adicionarAcoesContato(botoes, galpao.nome);
+        contato.append(botoes);
+        const fotosGaleria = [galpao.imagem, ...(galpao.fotos || [])].filter(
+          Boolean,
+        );
+
+        const galeria = criar("section", "galeria-imovel");
+
+        if (fotosGaleria.length > 1) {
+          galeria.append(
+            criar("p", "detalhe-etiqueta", "GALERIA"),
+            criar("h2", "", "Veja mais fotos"),
+          );
+
+          const visualizador = criar("div", "galeria-visualizador");
+          const foto = criar("img");
+          const anterior = criar("button", "galeria-seta", "←");
+          const proxima = criar("button", "galeria-seta", "→");
+          const contador = criar("p", "galeria-contador");
+
+          anterior.type = "button";
+          anterior.setAttribute("aria-label", "Foto anterior");
+          proxima.type = "button";
+          proxima.setAttribute("aria-label", "Próxima foto");
+          contador.setAttribute("aria-live", "polite");
+
+          let indice = 0;
+
+          function mostrarFoto() {
+            foto.src = fotosGaleria[indice];
+            foto.alt = `Foto ${indice + 1} de ${fotosGaleria.length} — ${galpao.nome}`;
+            contador.textContent = `${indice + 1} / ${fotosGaleria.length}`;
+          }
+
+          anterior.addEventListener("click", () => {
+            indice = (indice - 1 + fotosGaleria.length) % fotosGaleria.length;
+            mostrarFoto();
+          });
+
+          proxima.addEventListener("click", () => {
+            indice = (indice + 1) % fotosGaleria.length;
+            mostrarFoto();
+          });
+
+          mostrarFoto();
+          visualizador.append(anterior, foto, proxima);
+          galeria.append(visualizador, contador);
+        }
         conteudo.append(apresentacao, fotoBox, dados, informacoes);
+
+        if (fotosGaleria.length > 1) {
+          conteudo.append(galeria);
+        }
+
+        conteudo.append(chamada);
       }
     </script>
   </body>

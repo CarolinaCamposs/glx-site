@@ -4,91 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GLX | Galpões Logísticos Express</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
+  <script src="contato.js"></script>
+  <script src="rodape.js"></script>
   <body>
     <header class="cabecalho">
-      <a class="logo" href="#">GLX <span>Galpões Logísticos Express</span></a>
+      <a class="logo" href="index.html">
+        GLX <span>Galpões Logísticos Express</span>
+      </a>
 
       <nav>
         <a href="galpoes.html">Galpões</a>
-        <a href="#anunciar">Anuncie seu imóvel</a>
       </nav>
     </header>
-
-    <section id="galpoes" class="imoveis">
-      <div class="titulo-secao">
-        <p>OPORTUNIDADES GLX</p>
-        <h2>Galpão em destaque</h2>
-      </div>
-
-      <article class="destaque">
-        <div class="imagem-imovel">GLX</div>
-
-        <div class="conteudo-destaque">
-          <span class="etiqueta">EXEMPLO DEMONSTRATIVO</span>
-          <h3>Galpão logístico em destaque</h3>
-          <p>
-            Aqui aparecerão a localização, a área e as principais
-            características do galpão escolhido pela GLX.
-          </p>
-
-          <details>
-            <summary>Ver mais detalhes →</summary>
-            <p>
-              Nesta área, mostraremos a descrição completa e o contato
-              responsável pelo imóvel.
-            </p>
-          </details>
-        </div>
-      </article>
-
-      <div class="titulo-secao outros-titulo">
-        <p>CONHEÇA MAIS ESPAÇOS</p>
-        <h2>Outros galpões</h2>
-      </div>
-
-      <div class="grade-galpoes">
-        <article class="cartao">
-          <div class="imagem-cartao">GLX</div>
-          <div class="conteudo-cartao">
-            <span class="etiqueta">EXEMPLO DEMONSTRATIVO</span>
-            <h3>Galpão 01</h3>
-            <p>Informações do imóvel serão exibidas aqui.</p>
-            <details>
-              <summary>Ver mais detalhes →</summary>
-              <p>Descrição e características do galpão 01.</p>
-            </details>
-          </div>
-        </article>
-
-        <article class="cartao">
-          <div class="imagem-cartao">GLX</div>
-          <div class="conteudo-cartao">
-            <span class="etiqueta">EXEMPLO DEMONSTRATIVO</span>
-            <h3>Galpão 02</h3>
-            <p>Informações do imóvel serão exibidas aqui.</p>
-            <details>
-              <summary>Ver mais detalhes →</summary>
-              <p>Descrição e características do galpão 02.</p>
-            </details>
-          </div>
-        </article>
-
-        <article class="cartao">
-          <div class="imagem-cartao">GLX</div>
-          <div class="conteudo-cartao">
-            <span class="etiqueta">EXEMPLO DEMONSTRATIVO</span>
-            <h3>Galpão 03</h3>
-            <p>Informações do imóvel serão exibidas aqui.</p>
-            <details>
-              <summary>Ver mais detalhes →</summary>
-              <p>Descrição e características do galpão 03.</p>
-            </details>
-          </div>
-        </article>
-      </div>
-    </section>
 
     <main>
       <section class="banner">
@@ -96,25 +25,111 @@
         <h1>O espaço para a sua próxima grande operação.</h1>
         <a href="#galpoes">Conhecer os galpões →</a>
       </section>
+
+      <section id="galpoes" class="imoveis">
+        <div class="titulo-secao">
+          <p>OPORTUNIDADES GLX</p>
+          <h2>Galpão em destaque</h2>
+        </div>
+
+        <div id="galpao-destaque"></div>
+
+        <div class="titulo-secao outros-titulo">
+          <p>CONHEÇA MAIS ESPAÇOS</p>
+          <h2>Outros galpões</h2>
+        </div>
+
+        <div class="grade-galpoes" id="outros-galpoes"></div>
+
+        <a class="ver-todos" href="galpoes.html"> Ver todos os galpões → </a>
+      </section>
     </main>
 
-    <footer class="rodape">
-      <div>
-        <strong class="rodape-logo">GLX</strong>
-        <p>Galpões Logísticos Express</p>
-      </div>
+    <footer id="rodape-site"></footer>
 
-      <div>
-        <strong>Encontre o espaço para sua operação</strong>
-        <p>Galpões logísticos, imóveis industriais e terrenos.</p>
-      </div>
+    <script>
+      const areaDestaque = document.querySelector("#galpao-destaque");
+      const areaOutros = document.querySelector("#outros-galpoes");
 
-      <div class="rodape-links">
-        <a href="#galpoes">Ver galpões</a>
-        <a href="#anunciar">Anunciar imóvel</a>
-      </div>
+      function elemento(tag, classe, texto) {
+        const item = document.createElement(tag);
+        if (classe) item.className = classe;
+        if (texto) item.textContent = texto;
+        return item;
+      }
 
-      <p class="direitos">© GLX Galpões Logísticos Express</p>
-    </footer>
+      function criarImagem(galpao, classe) {
+        const caixa = elemento("div", classe);
+
+        if (galpao.imagem) {
+          const foto = elemento("img");
+          foto.src = galpao.imagem;
+          foto.alt = `Foto de ${galpao.nome}`;
+          foto.addEventListener("error", () => {
+            caixa.replaceChildren(elemento("span", "", "GLX"));
+          });
+          caixa.append(foto);
+        } else {
+          caixa.append(elemento("span", "", "GLX"));
+        }
+
+        return caixa;
+      }
+
+      function criarLink(galpao) {
+        const link = elemento("a", "link-detalhes", "Ver mais detalhes →");
+        link.href = `detalhes.html?id=${encodeURIComponent(galpao.id)}`;
+        return link;
+      }
+
+      if (galpoes.length === 0) {
+        areaDestaque.append(
+          elemento("p", "", "Novos galpões aparecerão aqui em breve."),
+        );
+      } else {
+        // Extrema fica em destaque; se sair da lista, usamos o primeiro.
+        const destaque =
+          galpoes.find((galpao) => galpao.id === "extrema-fernao-dias") ||
+          galpoes[0];
+
+        const artigo = elemento("article", "destaque");
+        const conteudo = elemento("div", "conteudo-destaque");
+
+        conteudo.append(
+          elemento("span", "etiqueta", "GALPÃO EM DESTAQUE"),
+          elemento("h3", "", destaque.nome),
+          elemento("p", "", `${destaque.cidade} / ${destaque.uf}`),
+          elemento("p", "", destaque.descricao),
+          criarLink(destaque),
+        );
+
+        artigo.append(criarImagem(destaque, "imagem-imovel"), conteudo);
+        areaDestaque.append(artigo);
+
+        const outros = galpoes
+          .filter((galpao) => galpao.id !== destaque.id)
+          .slice(0, 3);
+
+        outros.forEach((galpao) => {
+          const cartao = elemento("article", "cartao");
+          const conteudoCartao = elemento("div", "conteudo-cartao");
+
+          conteudoCartao.append(
+            elemento("h3", "", galpao.nome),
+            elemento("p", "", `${galpao.cidade} / ${galpao.uf}`),
+            criarLink(galpao),
+          );
+
+          cartao.append(criarImagem(galpao, "imagem-cartao"), conteudoCartao);
+          areaOutros.append(cartao);
+        });
+
+        if (outros.length === 0) {
+          areaOutros.append(
+            elemento("p", "", "Outros galpões aparecerão aqui em breve."),
+          );
+        }
+      }
+    </script>
   </body>
 </html>

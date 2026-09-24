@@ -15,19 +15,27 @@ const galpoes = [
             "oferece acesso aos corredores de distribuição do Sudeste e módulos " +
             "flexíveis para diferentes operações. O início das obras está " +
             "previsto para 2026.",
-        imagem: "imagens/betim.jpg",
+        imagem: "imagens/betim/fachada.jpg",
+        fotos: [
+            "imagens/betim/fachada2.jpg",
+            "imagens/betim/interna1.jpg",
+            "imagens/betim/interna2.jpg",
+            "imagens/betim/interna3.jpg",
+            "imagens/betim/externa2.jpg",
+            "imagens/betim/externa4.jpg"
+        ],
         caracteristicas: [
-            "Expansão de 39.214,37 m² de ABL",
-            "Módulos flexíveis",
-            "Pé-direito de 12 m",
-            "Capacidade do piso de 6 t/m²",
-            "Cross docking",
-            "Sistema de sprinklers J4",
-            "Iluminação LED e zenital",
-            "Ventilação cruzada",
-            "Mezanino sob medida",
-            "Certificação LEED Silver informada para o empreendimento"
-        ]
+                "Expansão de 39.214,37 m² de ABL",
+                "Módulos flexíveis",
+                "Pé-direito de 12 m",
+                "Capacidade do piso de 6 t/m²",
+                "Cross docking",
+                "Sistema de sprinklers J4",
+                "Iluminação LED e zenital",
+                "Ventilação cruzada",
+                "Mezanino sob medida",
+                "Certificação LEED Silver informada para o empreendimento"
+            ]
     },
 
     {
@@ -44,6 +52,11 @@ const galpoes = [
             "Módulo logístico Triple AAA em Extrema/MG, na Rodovia Fernão Dias. " +
             "Conta com estrutura cross docking e infraestrutura para operações logísticas.",
         imagem: "imagens/extrema.jpg",
+        fotos: [
+            "imagens/betim-interna.jpg",
+            "imagens/betim-docas.jpg",
+            "imagens/betim-fachada.jpg"
+        ],
         caracteristicas: [
             "7 docas com niveladores",
             "Pé-direito de 12 m",
