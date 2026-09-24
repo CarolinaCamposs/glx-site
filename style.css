@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background: #161616;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 6%;
+  border-bottom: 1px solid #5c5141;
+}
+
+.logo {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo span {
+  display: inline-block;
+  max-width: 110px;
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid #c8a46c;
+  font: 11px Arial, sans-serif;
+  line-height: 1.3;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+nav a,
+.banner a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.banner {
+  min-height: 520px;
+  padding: 110px 6%;
+  background: linear-gradient(120deg, #161616, #453729);
+}
+
+.banner p {
+  color: #c8a46c;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.banner h1 {
+  max-width: 750px;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 1.1;
+}
+
+.banner a {
+  display: inline-block;
+  padding: 15px 22px;
+  background: #b28b4e;
+  color: #161616;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .cabecalho {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+}
