@@ -1,22 +1,7 @@
 # GLX — Galpões Logísticos Express
 
-Site para divulgar galpões logísticos, imóveis industriais e terrenos.
+Site de divulgação de galpões logísticos e industriais da GLX.
 
-## Objetivo
-Permitir a busca de imóveis, o envio gratuito de anúncios por proprietários
-e a publicação de imóveis por uma área administrativa.
+A página inicial apresenta um galpão em destaque e outras oportunidades. A lista de imóveis permite acessar páginas individuais com fotos, localização, área, disponibilidade e características de cada galpão.
 
-## Funcionalidades planejadas
-- [x] Cabeçalho e banner inicial
-- [ ] Galpão em destaque
-- [ ] Prévia de três galpões
-- [ ] Página com todos os imóveis
-- [ ] Formulário para anunciar
-- [ ] Área administrativa
-
-## Tecnologias
-HTML e CSS nesta primeira etapa. A parte de cadastro e gerenciamento
-será adicionada ao longo do desenvolvimento.
-
-## Diário de desenvolvimento
-- Etapa 1: estrutura inicial da página e identidade visual da GLX.
+O site também oferece contato comercial por WhatsApp e e-mail e foi desenvolvido com HTML, CSS e JavaScript, com layout adaptado para computadores e celulares.
