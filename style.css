@@ -545,3 +545,59 @@ img { max-width: 100%; }
     font-size: 18px;
   }
 }
+
+.botao-menu {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .cabecalho {
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .botao-menu {
+    display: block;
+    padding: 8px 12px;
+    border: 1px solid #c8a46c;
+    border-radius: 6px;
+    background: transparent;
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  .menu-principal {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    padding: 16px 6% 22px;
+    background: #161616;
+    border-bottom: 1px solid #5c5141;
+  }
+
+  .menu-principal.aberto {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .menu-principal a {
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .cabecalho .menu-principal {
+    display: none;
+  }
+
+  .cabecalho .menu-principal.aberto {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -13,8 +13,20 @@
         GLX <span>Galpões Logísticos Express</span>
       </a>
 
-      <nav>
+      <button
+        class="botao-menu"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="menu-principal"
+      >
+        ☰
+      </button>
+
+      <nav id="menu-principal" class="menu-principal">
+        <a href="index.html">Início</a>
         <a href="galpoes.html">Galpões</a>
+        <a href="#rodape-site">Contato</a>
       </nav>
     </header>
 
@@ -132,6 +144,20 @@
           );
         }
       }
+    </script>
+    <script>
+      const botaoMenu = document.querySelector(".botao-menu");
+      const menuPrincipal = document.querySelector(".menu-principal");
+
+      botaoMenu.addEventListener("click", () => {
+        const aberto = menuPrincipal.classList.toggle("aberto");
+        botaoMenu.setAttribute("aria-expanded", String(aberto));
+        botaoMenu.setAttribute(
+          "aria-label",
+          aberto ? "Fechar menu" : "Abrir menu",
+        );
+        botaoMenu.textContent = aberto ? "✕" : "☰";
+      });
     </script>
   </body>
 </html>
