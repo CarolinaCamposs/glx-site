@@ -349,3 +349,211 @@ details p {
   margin: 30px 0;
   object-fit: cover;
 }
+
+/* Página de detalhes dos galpões */
+.pagina-detalhes {
+  min-height: 100vh;
+  padding: 32px 6% 100px;
+  background: #f6f5f2;
+  color: #202020;
+}
+
+.voltar-galpoes {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: #8a6734;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.voltar-galpoes:hover {
+  text-decoration: underline;
+}
+
+.detalhe-apresentacao {
+  padding: 55px 6%;
+  background: #1b1b1b;
+  color: #fff;
+  border-bottom: 5px solid #b99259;
+}
+
+.detalhe-etiqueta {
+  margin: 0 0 15px;
+  color: #b99259;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.detalhe-apresentacao h1 {
+  max-width: 900px;
+  margin: 0 0 20px;
+  font-size: clamp(38px, 5vw, 68px);
+  line-height: 1.08;
+}
+
+.detalhe-local {
+  margin: 0;
+  color: #e1d9ce;
+  font-size: 19px;
+}
+
+.detalhe-foto {
+  display: grid;
+  place-items: center;
+  height: clamp(290px, 42vw, 520px);
+  background: linear-gradient(135deg, #ded6c8, #a89676);
+  color: #4d4232;
+  font-size: 18px;
+}
+
+.detalhe-foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detalhe-dados {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 22px;
+  background: #ded6ca;
+  border: 1px solid #ded6ca;
+}
+
+.detalhe-dado {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 110px;
+  padding: 24px;
+  background: #fff;
+}
+
+.detalhe-dado span {
+  color: #8a6734;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.detalhe-dado strong {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.detalhe-informacoes {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+  margin-top: 75px;
+}
+
+.detalhe-informacoes h2 {
+  margin: 0 0 20px;
+  font-size: clamp(28px, 3vw, 40px);
+}
+
+.detalhe-sobre > p:not(.detalhe-etiqueta),
+.detalhe-especificacoes li {
+  color: #514c45;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.detalhe-valor {
+  padding-top: 20px;
+  border-top: 1px solid #d8d0c3;
+  font-weight: bold;
+}
+
+.detalhe-especificacoes {
+  padding: 35px;
+  background: #fff;
+  border-top: 4px solid #b99259;
+}
+
+.detalhe-especificacoes ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.detalhe-especificacoes li {
+  padding: 7px 0;
+}
+
+.detalhe-especificacoes li::marker {
+  color: #b99259;
+}
+
+@media (max-width: 850px) {
+  .detalhe-dados {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detalhe-informacoes {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+
+@media (max-width: 520px) {
+  .detalhe-apresentacao {
+    padding: 38px 24px;
+  }
+
+  .detalhe-dados {
+    grid-template-columns: 1fr;
+  }
+
+  .detalhe-dado {
+    min-height: auto;
+  }
+
+  .detalhe-especificacoes {
+    padding: 25px;
+  }
+}
+
+/* Mantém a foto dentro da área reservada */
+.detalhe-foto {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+}
+
+.detalhe-foto img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Coloca os dados e o texto abaixo da foto */
+.detalhe-dados,
+.detalhe-informacoes {
+  position: relative;
+  clear: both;
+}
+
+.detalhe-informacoes {
+  margin-top: 60px;
+}
+
+@media (max-width: 600px) {
+  .detalhe-foto {
+    height: 260px;
+  }
+
+  .detalhe-informacoes {
+    margin-top: 40px;
+  }
+}
+

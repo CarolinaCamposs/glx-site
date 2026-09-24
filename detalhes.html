@@ -11,6 +11,7 @@
       <a class="logo" href="index.html">
         GLX <span>Galpões Logísticos Express</span>
       </a>
+
       <nav>
         <a href="index.html">Início</a>
         <a href="galpoes.html">Galpões</a>
@@ -25,44 +26,92 @@
     <script src="dados-galpoes.js"></script>
     <script>
       const id = new URLSearchParams(window.location.search).get("id");
-      const galpao = galpoes.find(function (item) {
-        return item.id === id;
-      });
+      const galpao = galpoes.find((item) => item.id === id);
       const conteudo = document.querySelector("#conteudo-galpao");
 
+      function criar(tag, classe, texto) {
+        const elemento = document.createElement(tag);
+        if (classe) elemento.className = classe;
+        if (texto) elemento.textContent = texto;
+        return elemento;
+      }
+
       if (!galpao) {
-        const aviso = document.createElement("h1");
-        aviso.textContent = "Galpão não encontrado";
-        conteudo.append(aviso);
+        conteudo.append(criar("h1", "", "Galpão não encontrado"));
       } else {
         document.title = `${galpao.nome} | GLX`;
 
-        const titulo = document.createElement("h1");
-        titulo.textContent = galpao.nome;
+        const apresentacao = criar("section", "detalhe-apresentacao");
+        apresentacao.append(
+          criar("p", "detalhe-etiqueta", "GALPÕES LOGÍSTICOS EXPRESS"),
+          criar("h1", "", galpao.nome),
+          criar("p", "detalhe-local", `${galpao.cidade} / ${galpao.uf}`),
+        );
 
-        const local = document.createElement("p");
-        local.textContent = `${galpao.cidade} / ${galpao.uf}`;
-
-        const area = document.createElement("p");
-        area.textContent = `Área: ${galpao.area}`;
-
-        const finalidade = document.createElement("p");
-        finalidade.textContent = `Finalidade: ${galpao.finalidade}`;
-
-        const descricao = document.createElement("p");
-        descricao.textContent = galpao.descricao;
-
-        conteudo.append(titulo, local);
+        const fotoBox = criar("div", "detalhe-foto");
 
         if (galpao.imagem) {
-          const foto = document.createElement("img");
+          const foto = criar("img");
           foto.src = galpao.imagem;
           foto.alt = `Foto de ${galpao.nome}`;
-          foto.className = "foto-detalhes";
-          conteudo.append(foto);
+          foto.addEventListener("error", () => {
+            fotoBox.replaceChildren(
+              criar("span", "", "Imagem do imóvel em breve"),
+            );
+          });
+          fotoBox.append(foto);
+        } else {
+          fotoBox.append(criar("span", "", "Imagem do imóvel em breve"));
         }
 
-        conteudo.append(area, finalidade, descricao);
+        const dados = criar("section", "detalhe-dados");
+
+        function adicionarDado(rotulo, valor) {
+          if (!valor) return;
+
+          const cartao = criar("div", "detalhe-dado");
+          cartao.append(criar("span", "", rotulo), criar("strong", "", valor));
+          dados.append(cartao);
+        }
+
+        adicionarDado("ÁREA", galpao.area);
+        adicionarDado("FINALIDADE", galpao.finalidade);
+        adicionarDado("DISPONIBILIDADE", galpao.disponibilidade);
+        adicionarDado("MÓDULOS", galpao.modulos);
+
+        const informacoes = criar("div", "detalhe-informacoes");
+
+        const sobre = criar("section", "detalhe-sobre");
+        sobre.append(
+          criar("p", "detalhe-etiqueta", "CONHEÇA O IMÓVEL"),
+          criar("h2", "", "Sobre o galpão"),
+          criar("p", "", galpao.descricao),
+        );
+
+        if (galpao.valor) {
+          sobre.append(criar("p", "detalhe-valor", `Valor: ${galpao.valor}`));
+        }
+
+        informacoes.append(sobre);
+
+        if (galpao.caracteristicas?.length) {
+          const especificacoes = criar("section", "detalhe-especificacoes");
+          especificacoes.append(
+            criar("p", "detalhe-etiqueta", "ESTRUTURA"),
+            criar("h2", "", "Características"),
+          );
+
+          const lista = criar("ul");
+
+          galpao.caracteristicas.forEach((caracteristica) => {
+            lista.append(criar("li", "", caracteristica));
+          });
+
+          especificacoes.append(lista);
+          informacoes.append(especificacoes);
+        }
+
+        conteudo.append(apresentacao, fotoBox, dados, informacoes);
       }
     </script>
   </body>
