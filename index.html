@@ -6,8 +6,7 @@
     <title>GLX | Galpões Logísticos Express</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <script src="contato.js"></script>
-  <script src="rodape.js"></script>
+
   <body>
     <header class="cabecalho">
       <a class="logo" href="index.html">
@@ -46,6 +45,10 @@
     </main>
 
     <footer id="rodape-site"></footer>
+
+    <script src="contato.js"></script>
+    <script src="dados-galpoes.js"></script>
+    <script src="rodape.js"></script>
 
     <script>
       const areaDestaque = document.querySelector("#galpao-destaque");
@@ -87,9 +90,8 @@
           elemento("p", "", "Novos galpões aparecerão aqui em breve."),
         );
       } else {
-        // Extrema fica em destaque; se sair da lista, usamos o primeiro.
         const destaque =
-          galpoes.find((galpao) => galpao.id === "extrema-fernao-dias") ||
+          galpoes.find((galpao) => galpao.id === "betim-business") ||
           galpoes[0];
 
         const artigo = elemento("article", "destaque");

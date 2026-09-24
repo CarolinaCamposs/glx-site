@@ -51,7 +51,7 @@ const galpoes = [
         descricao:
             "Módulo logístico Triple AAA em Extrema/MG, na Rodovia Fernão Dias. " +
             "Conta com estrutura cross docking e infraestrutura para operações logísticas.",
-        imagem: "imagens/extrema.jpg",
+        imagem: "imagens/extrema/extrema.jpg",
         fotos: [
             "imagens/betim-interna.jpg",
             "imagens/betim-docas.jpg",
