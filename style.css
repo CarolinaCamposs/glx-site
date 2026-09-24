@@ -219,3 +219,64 @@ details p {
     grid-column: 1;
   }
 }
+
+.pagina-galpoes {
+  min-height: 80vh;
+  padding: 60px 6%;
+  background: #f6f5f2;
+  color: #202020;
+}
+
+.pagina-galpoes h1 {
+  font-size: clamp(36px, 5vw, 60px);
+}
+
+.item-galpao {
+  max-width: 420px;
+  margin-top: 35px;
+  padding: 30px;
+  background: #fff;
+  border-top: 4px solid #c8a46c;
+}
+
+.pagina-detalhes {
+  min-height: 80vh;
+  padding: 50px 6% 90px;
+  background: #f6f5f2;
+  color: #202020;
+}
+
+.voltar-galpoes,
+.link-detalhes {
+  color: #8a6734;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.link-detalhes {
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.pagina-detalhes .etiqueta {
+  display: block;
+  margin-top: 50px;
+}
+
+.pagina-detalhes h1 {
+  font-size: clamp(38px, 5vw, 62px);
+}
+
+.foto-exemplo {
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  background: #ded6c8;
+  color: #514536;
+}
+
+.informacoes-galpao {
+  max-width: 750px;
+  margin-top: 45px;
+}
+
