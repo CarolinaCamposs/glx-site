@@ -82,3 +82,99 @@ nav a,
     flex-wrap: wrap;
   }
 }
+
+.imoveis {
+  padding: 75px 6%;
+  color: #202020;
+  background: #f6f5f2;
+}
+
+.titulo-secao p,
+.etiqueta {
+  color: #9a753c;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.titulo-secao h2 {
+  margin: 8px 0 30px;
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.destaque {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  min-height: 380px;
+  background: #fff;
+}
+
+.imagem-imovel,
+.imagem-cartao {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #ded6c8, #a9997d);
+  color: #342b20;
+  font: 64px Georgia, serif;
+}
+
+.conteudo-destaque {
+  padding: 55px;
+  align-self: center;
+}
+
+.conteudo-destaque h3 {
+  font-size: 36px;
+}
+
+.outros-titulo {
+  margin-top: 80px;
+}
+
+.grade-galpoes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.cartao {
+  background: #fff;
+}
+
+.imagem-cartao {
+  height: 190px;
+  font-size: 42px;
+}
+
+.conteudo-cartao {
+  padding: 24px;
+}
+
+details {
+  margin-top: 25px;
+}
+
+summary {
+  color: #8a6734;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+details p {
+  color: #5b554d;
+}
+
+@media (max-width: 750px) {
+  .destaque,
+  .grade-galpoes {
+    grid-template-columns: 1fr;
+  }
+
+  .imagem-imovel {
+    min-height: 250px;
+  }
+
+  .conteudo-destaque {
+    padding: 30px;
+  }
+}
