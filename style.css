@@ -178,3 +178,44 @@ details p {
     padding: 30px;
   }
 }
+
+.rodape {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  padding: 55px 6% 25px;
+  background: #161616;
+  color: #fff;
+}
+
+.rodape-logo {
+  font: 42px Georgia, serif;
+}
+
+.rodape p {
+  color: #c5beb3;
+}
+
+.rodape-links a {
+  display: block;
+  margin-bottom: 12px;
+  color: #c8a46c;
+  text-decoration: none;
+}
+
+.direitos {
+  grid-column: 1 / -1;
+  padding-top: 20px;
+  border-top: 1px solid #4d463d;
+  font-size: 13px;
+}
+
+@media (max-width: 750px) {
+  .rodape {
+    grid-template-columns: 1fr;
+  }
+
+  .direitos {
+    grid-column: 1;
+  }
+}
